@@ -1,0 +1,832 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+
+  --pink: #ff72b5;
+  --purple: #8b6cff;
+
+  --text: #ffffff;
+  --muted: #c7c7d8;
+
+  --glass: rgba(255, 255, 255, 0.065);
+
+}
+
+
+
+body {
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  font-family: "Cairo", sans-serif;
+
+  color: var(--text);
+
+  background:
+
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(255, 93, 170, .18),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(118, 90, 255, .18),
+      transparent 30%
+    ),
+
+    #080812;
+
+}
+
+
+
+/* ========================= */
+/* BACKGROUND */
+/* ========================= */
+
+.background {
+
+  position: fixed;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  z-index: -1;
+
+}
+
+
+.glow {
+
+  position: absolute;
+
+  width: 350px;
+
+  height: 350px;
+
+  border-radius: 50%;
+
+  filter: blur(120px);
+
+  opacity: .15;
+
+}
+
+
+.glow-1 {
+
+  background: var(--pink);
+
+  top: -160px;
+
+  right: -100px;
+
+}
+
+
+.glow-2 {
+
+  background: var(--purple);
+
+  bottom: -180px;
+
+  left: -100px;
+
+}
+
+
+.stars {
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.8) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  opacity: .18;
+
+  animation: starsMove 30s linear infinite;
+
+}
+
+
+@keyframes starsMove {
+
+  from {
+
+    transform: translateY(0);
+
+  }
+
+  to {
+
+    transform: translateY(-80px);
+
+  }
+
+}
+
+
+
+/* ========================= */
+/* APP */
+/* ========================= */
+
+.app {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+}
+
+
+
+/* ========================= */
+/* CARD */
+/* ========================= */
+
+.card {
+
+  position: relative;
+
+  width: min(440px, 100%);
+
+  min-height: 600px;
+
+  padding: 45px 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 32px;
+
+  border: 1px solid rgba(255,255,255,.11);
+
+  background: var(--glass);
+
+  backdrop-filter: blur(25px);
+
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+
+    0 30px 90px rgba(0,0,0,.45),
+
+    inset 0 1px rgba(255,255,255,.1);
+
+  overflow: hidden;
+
+}
+
+
+.card::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 240px;
+
+  height: 240px;
+
+  border-radius: 50%;
+
+  background: var(--pink);
+
+  filter: blur(120px);
+
+  opacity: .08;
+
+  top: -120px;
+
+  left: -100px;
+
+}
+
+
+
+/* ========================= */
+/* STEPS */
+/* ========================= */
+
+.step {
+
+  display: none;
+
+  width: 100%;
+
+  animation: stepIn .7s ease;
+
+}
+
+
+.step.active {
+
+  display: block;
+
+}
+
+
+@keyframes stepIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(18px)
+      scale(.98);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+}
+
+
+
+/* ========================= */
+/* ILLUSTRATION */
+/* ========================= */
+
+.illustration {
+
+  width: 130px;
+
+  height: 130px;
+
+  margin: 0 auto 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  filter:
+    drop-shadow(
+      0 15px 30px
+      rgba(255,100,180,.12)
+    );
+
+}
+
+
+.illustration svg {
+
+  width: 100%;
+
+  height: 100%;
+
+}
+
+
+
+/* ========================= */
+/* GIFT */
+/* ========================= */
+
+.gift-box {
+
+  width: 180px;
+
+  margin: 0 auto 30px;
+
+  cursor: pointer;
+
+  transition: .35s;
+
+  filter:
+    drop-shadow(
+      0 20px 35px
+      rgba(255,80,170,.2)
+    );
+
+}
+
+
+.gift-box:hover {
+
+  transform:
+    translateY(-8px)
+    scale(1.04);
+
+}
+
+
+.gift-box:active {
+
+  transform: scale(.94);
+
+}
+
+
+
+/* ========================= */
+/* PREMIUM CAKE */
+/* ========================= */
+
+.premium-cake {
+
+  width: 230px;
+
+  margin: 0 auto 25px;
+
+  animation:
+    cakeFloat 4s
+    ease-in-out
+    infinite;
+
+  filter:
+    drop-shadow(
+      0 20px 40px
+      rgba(255, 90, 180, .18)
+    );
+
+}
+
+
+.premium-cake svg {
+
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+
+}
+
+
+@keyframes cakeFloat {
+
+  0%,
+  100% {
+
+    transform:
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-8px);
+
+  }
+
+}
+
+
+
+/* ========================= */
+/* TEXT */
+/* ========================= */
+
+.eyebrow {
+
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #a9a4c5;
+
+}
+
+
+h1 {
+
+  font-size:
+    clamp(
+      31px,
+      8vw,
+      43px
+    );
+
+  line-height: 1.35;
+
+  font-weight: 800;
+
+  margin-bottom: 14px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #ff9aca,
+      #b19aff
+    );
+
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+  color: transparent;
+
+}
+
+
+h2 {
+
+  font-size:
+    clamp(
+      22px,
+      6vw,
+      28px
+    );
+
+  line-height: 1.5;
+
+  font-weight: 700;
+
+  margin-bottom: 15px;
+
+}
+
+
+p {
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 2;
+
+  color: var(--muted);
+
+}
+
+
+.person-name {
+
+  color: #ff8bc5;
+
+  font-weight: 700;
+
+  margin-bottom: 20px;
+
+}
+
+
+.birthday-message {
+
+  max-width: 350px;
+
+  margin: auto;
+
+  font-size: 15px;
+
+}
+
+
+.tap-text {
+
+  color: #aaaabd;
+
+  font-size: 13px;
+
+}
+
+
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
+.primary-btn {
+
+  margin-top: 30px;
+
+  padding: 14px 24px;
+
+  border: 1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 100px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #ff5ca8,
+      #8261ff
+    );
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+
+    0 12px 35px
+    rgba(255,80,170,.22);
+
+  transition: .3s;
+
+}
+
+
+.primary-btn:hover {
+
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+
+    0 18px 40px
+    rgba(255,80,170,.32);
+
+}
+
+
+.primary-btn:active {
+
+  transform:
+    scale(.96);
+
+}
+
+
+.arrow {
+
+  display: inline-block;
+
+  margin-right: 8px;
+
+  transition: .3s;
+
+}
+
+
+.primary-btn:hover
+.arrow {
+
+  transform:
+    translateX(-4px);
+
+}
+
+
+
+/* ========================= */
+/* SIGNATURE */
+/* ========================= */
+
+.signature {
+
+  margin-top: 28px;
+
+  font-size: 12px;
+
+  color: #9898ad;
+
+}
+
+
+
+/* ========================= */
+/* PROGRESS */
+/* ========================= */
+
+.progress {
+
+  position: absolute;
+
+  bottom: 22px;
+
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  gap: 6px;
+
+}
+
+
+.dot {
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.18);
+
+  transition: .3s;
+
+}
+
+
+.dot.active {
+
+  width: 22px;
+
+  border-radius: 20px;
+
+  background:
+    var(--pink);
+
+}
+
+
+
+/* ========================= */
+/* PARTICLES */
+/* ========================= */
+
+.particle {
+
+  position: fixed;
+
+  top: -20px;
+
+  z-index: 20;
+
+  pointer-events: none;
+
+  animation:
+    fall linear forwards;
+
+}
+
+
+@keyframes fall {
+
+  to {
+
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+
+    opacity: 0;
+
+  }
+
+}
+
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 500px) {
+
+  .app {
+
+    padding: 15px;
+
+  }
+
+
+  .card {
+
+    min-height: 570px;
+
+    padding:
+      35px 22px 45px;
+
+    border-radius: 27px;
+
+  }
+
+
+  .illustration {
+
+    width: 115px;
+
+    height: 115px;
+
+    margin-bottom: 22px;
+
+  }
+
+
+  .gift-box {
+
+    width: 155px;
+
+  }
+
+
+  .premium-cake {
+
+    width: 205px;
+
+  }
+
+
+  p {
+
+    font-size: 14px;
+
+  }
+
+
+  .birthday-message {
+
+    font-size: 14px;
+
+  }
+
+}
+
+
+
+/* ========================= */
+/* SMALL HEIGHT */
+/* ========================= */
+
+@media (max-height: 650px) {
+
+  .card {
+
+    min-height: 520px;
+
+    padding-top: 25px;
+
+  }
+
+
+  .illustration {
+
+    width: 95px;
+
+    height: 95px;
+
+    margin-bottom: 15px;
+
+  }
+
+
+  .gift-box {
+
+    width: 130px;
+
+    margin-bottom: 15px;
+
+  }
+
+
+  .premium-cake {
+
+    width: 170px;
+
+  }
+
+}
